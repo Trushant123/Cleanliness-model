@@ -8,10 +8,13 @@ import os
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-# Load .keras model
+# Load .h5 model
 @st.cache_resource
 def load_classifier():
-    return load_model("mobilenetv2_classifier.keras")
+    if not os.path.exists("mobilenetv2_clean_dirty_classifier.h5"):
+        st.error("❌ Model file 'mobilenetv2_classifier.h5' not found.")
+        st.stop()
+    return load_model("mobilenetv2_clean_dirty_classifier.h5")
 
 model = load_classifier()
 classes = ['Clean', 'Dirty']
