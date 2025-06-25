@@ -8,10 +8,10 @@ import os
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-# Load SavedModel (directory, not .h5)
+# Load .keras model
 @st.cache_resource
 def load_classifier():
-    return load_model("mobilenetv2_classifier")
+    return load_model("mobilenetv2_classifier.keras")
 
 model = load_classifier()
 classes = ['Clean', 'Dirty']
