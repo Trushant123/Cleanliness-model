@@ -8,10 +8,10 @@ import os
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-# Load model
+# Load SavedModel (directory, not .h5)
 @st.cache_resource
 def load_classifier():
-    return load_model("mobilenetv2_clean_dirty_classifier.h5")
+    return load_model("mobilenetv2_classifier")
 
 model = load_classifier()
 classes = ['Clean', 'Dirty']
